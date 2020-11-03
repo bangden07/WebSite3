@@ -98,7 +98,7 @@ const FeaturedProjects = ({ featured }) => {
         </a>
         <StyledProjectInfoContainer>
           <StyledContentLink href={demoLink ? demoLink : repoLink ? repoLink : '#'} target="_blank" rel="noopener">
-            <StyledH2>{startDate}</StyledH2>
+            <StyledH2>{title}</StyledH2>
           </StyledContentLink>
           <StyledDescription dangerouslySetInnerHTML={{ __html: project.html }} />
           <TechList techs={project.frontmatter.techs} />

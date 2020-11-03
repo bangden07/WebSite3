@@ -63,7 +63,7 @@ const ProjectList = ({ projects }) => {
       <StyledProject key={title}>
         <StyledHeader>
           <StyledContentLink href={demoLink ? demoLink : repoLink ? repoLink : '#'} target="_blank" rel="noopener noreferrer">
-            <StyledH2>{title}</StyledH2>
+            <StyledH2>{title}s</StyledH2>
           </StyledContentLink>
           <StyledLinkContainer>
             {repoLink && (

@@ -3,7 +3,7 @@ featured: true
 date: '2019-12-26'
 start_date: 'Aug 2019'
 end_date: 'present'
-title: 'Recipebox'
+title: 'BCIT'
 cover_image: './images/notebook.jpg'
 repo_link: 'https://github.com/Knochenmark/recipebox'
 demo_link: 'https://knochenmark.github.io/recipebox/'
