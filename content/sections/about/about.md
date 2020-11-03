@@ -1,5 +1,5 @@
 ---
-title: 'The Gatsby starter that makes developer dreams come true!'
+title: 'SharePoint Experience'
 about_image: './me.jpg'
 techs: ['SharePoint', 'React', '.Net Core', 'Sass/Less']
 ---

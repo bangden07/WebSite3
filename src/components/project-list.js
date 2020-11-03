@@ -42,7 +42,7 @@ const StyledInfoContainer = styled.section`
   flex-direction: column;
   position: relative;
 `;
-const StyledProjectText = styled(StyledTextSection)`
+const StyledProjectText = styled(StyledTextSection)`  
   > p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -62,17 +62,17 @@ const ProjectList = ({ projects }) => {
     return (
       <StyledProject key={title}>
         <StyledHeader>
-          <StyledContentLink href={demoLink ? demoLink : repoLink ? repoLink : '#'} target="_blank" rel="noopener">
+          <StyledContentLink href={demoLink ? demoLink : repoLink ? repoLink : '#'} target="_blank" rel="noopener noreferrer">
             <StyledH2>{title}</StyledH2>
           </StyledContentLink>
           <StyledLinkContainer>
             {repoLink && (
-              <a href={repoLink} target="_blank" rel="noopener" title="Repository Link" aria-label={repoLinkLabel}>
+              <a href={repoLink} target="_blank" rel="noopener noreferrer" title="Repository Link" aria-label={repoLinkLabel}>
                 <Icon icon="github" prefix="fab" />
               </a>
             )}
             {demoLink && (
-              <a href={demoLink} target="_blank" rel="noopener" title="Demo Link" aria-label={demoLinkLabel}>
+              <a href={demoLink} target="_blank" rel="noopener noreferrer" title="Demo Link" aria-label={demoLinkLabel}>
                 <Icon icon="external-link-alt" />
               </a>
             )}

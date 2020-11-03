@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import StyledSkewedSection from './skewed-section';
-import { StyledH1 } from './_shared/styled-headings';
+import {  StyledH1Black } from './_shared/styled-headings';
 
 const StyledLogoSection = styled.section`
   width: 100%;
@@ -45,14 +45,14 @@ const StyledFactNumber = styled.section`
 const Facts = () => {
   return (
     <StyledSkewedSection angle={10}>
-      <StyledH1>Some Interesting Facts</StyledH1>
+      <StyledH1Black>Some Interesting Facts</StyledH1Black>
       <StyledLogoSection>
         <StyledFactNumber>
           <span className="number">+12</span>
           <span className="fact">Years of Experience</span>
         </StyledFactNumber>
         <StyledFactNumber>
-          <span className="number">421</span>
+          <span className="number">+400</span>
           <span className="fact">
 Stack Overflow Reputation</span>
         </StyledFactNumber>

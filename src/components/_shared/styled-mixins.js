@@ -18,7 +18,7 @@ export const flexWrap = css`
 `;
 
 export const contentBox = css`
-  background-color: var(--bg-content-color);
+  background-color: var(--bg-nav-color);
   max-width: var(--content-width);
   margin: 0 auto;
   transition: background-color var(--transition-slow);
