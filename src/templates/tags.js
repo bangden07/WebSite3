@@ -21,7 +21,7 @@ const StyledTagsH1 = styled(StyledH1)`
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
-  const tagHeader = `A collection of ${totalCount} post${totalCount === 1 ? '' : 's'}`;
+  const tagHeader = `A collection of ${totalCount} blogs${totalCount === 1 ? '' : 's'}`;
 
   return (
     <Layout menuLinks={blogMenuLinks}>

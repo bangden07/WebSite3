@@ -4,8 +4,8 @@ date: '2017-10-01'
 title: 'ITFO Communication, Inc.'
 position: 'SharePoint Developer'
 cover_image: './images/ITFO.jpg'
-repo_link: 'http://www.itfo.com/'
+demo_link: 'http://www.itfo.com/'
 techs: ['M365', 'SharePoint Online', 'Spfx', 'Graph Api', 'Power Automate', 'ReactJS', 'Sass/Less']
 ---
 
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
+Spearheaded in developing a SharePoint Development projects in one of their biggest clients. Using AngularJS, I was able to create SPA that saves tons of money for the client. Instead of using third party software and services, the client was able maximize their existing O365 SharePoint because I was able to develop a tailor-fit application. Currently I am working with them to create an Enterprise wide application using ReactJS that will allow them track all their assets and their important campaign initiatives inside SharePoint.

@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: '/gatsby-starter-level-2',
+  pathPrefix: '/',
   siteMetadata: {
     title: 'Billy Peralta',
     titleTemplate: 'Billy Peralta',

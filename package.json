@@ -1,10 +1,10 @@
 {
-  "homepage": "https://knochenmark.github.io/gatsby-starter-level-2/",
-  "name": "gatsby-starter-level-2",
+  "homepage": "https://billyperalta.com/",
+  "name": "billy-peralta",
   "private": true,
   "description": "A minimalistic starter to quickly set up and configure your portfolio with Gatsby",
   "version": "0.1.0",
-  "author": "Knochenmark",
+  "author": "Billy Peralta",
   "scripts": {
     "deploy": "gatsby build --prefix-paths",
     "build": "gatsby build",
@@ -47,18 +47,7 @@
     "eslint-plugin-react": "^7.21.2",
     "prettier": "^2.1.2"
   },
-  "keywords": [
-    "gatsby",
-    "starter",
-    "portfolio",
-    "blog"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/knochenmark/gatsby-starter-level-2"
-  },
-  "bugs": {
-    "url": "https://github.com/knochenmark/gatsby-starter-level-2/issues"
-  }
+  
+  "license": "MIT"
+  
 }

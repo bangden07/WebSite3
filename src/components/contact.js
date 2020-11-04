@@ -57,7 +57,7 @@ const StyledContacts = styled.div`
 
 const Contact = ({ data }) => {
   const {
-    frontmatter: { phone, email, address },
+    frontmatter: { phone, email, address, linkedIn, linkedInAddress },
     html,
   } = data;
 
@@ -92,6 +92,17 @@ const Contact = ({ data }) => {
               <StyledFormContainer>
                 <StyledForm>Phone Number</StyledForm>
                 <span>{phone}</span>
+              </StyledFormContainer>
+            </StyledContainer>
+          )}
+          {linkedIn && (
+            <StyledContainer>
+              <Icon icon="linkedin" prefix="fab" />
+              <StyledFormContainer>
+                <StyledForm>LinkedIn</StyledForm>
+                <span>
+                  <a href={linkedInAddress}>{linkedInAddress}</a>
+                </span>
               </StyledFormContainer>
             </StyledContainer>
           )}

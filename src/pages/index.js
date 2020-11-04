@@ -145,6 +145,8 @@ export const query = graphql`
         phone
         email
         address
+        linkedIn
+        linkedInAddress
       }
       html
     }

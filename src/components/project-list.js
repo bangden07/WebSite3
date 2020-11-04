@@ -4,7 +4,7 @@ import React from 'react';
 import Icon from './icon';
 import TechList from './tech-list';
 import { StyledContentLink } from './_shared/styled-content-link';
-import { StyledH2 } from './_shared/styled-headings';
+import { StyledH2, StyledH4 } from './_shared/styled-headings';
 import { flexEnd } from './_shared/styled-mixins';
 import { StyledTextSection } from './_shared/styled-text-section';
 
@@ -42,7 +42,7 @@ const StyledInfoContainer = styled.section`
   flex-direction: column;
   position: relative;
 `;
-const StyledProjectText = styled(StyledTextSection)`  
+const StyledProjectText = styled(StyledTextSection)`
   > p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -58,16 +58,28 @@ const ProjectList = ({ projects }) => {
     const repoLink = project.frontmatter.repo_link;
     const demoLinkLabel = `featured project ${title} demo`;
     const repoLinkLabel = `featured project ${title} repo`;
+    const position = project.frontmatter.position;
 
     return (
       <StyledProject key={title}>
         <StyledHeader>
-          <StyledContentLink href={demoLink ? demoLink : repoLink ? repoLink : '#'} target="_blank" rel="noopener noreferrer">
-            <StyledH2>{title}s</StyledH2>
+          <StyledContentLink
+            href={demoLink ? demoLink : repoLink ? repoLink : '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <StyledH2>{title}</StyledH2>
+            <StyledH4>{position}</StyledH4>
           </StyledContentLink>
           <StyledLinkContainer>
             {repoLink && (
-              <a href={repoLink} target="_blank" rel="noopener noreferrer" title="Repository Link" aria-label={repoLinkLabel}>
+              <a
+                href={repoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Repository Link"
+                aria-label={repoLinkLabel}
+              >
                 <Icon icon="github" prefix="fab" />
               </a>
             )}
