@@ -26,7 +26,7 @@ const Index = ({ data }) => {
     <Layout menuLinks={indexMenuLinks}>
       <SEO title="Home" />
       <Hero data={heroData} />
-      <Facts/>
+      <Facts />
       <About data={data.about} />
       {/* <CardGrid cards={data.cards.frontmatter.cards} description={data.cards.html} title="Our Features" id="features" /> */}
       <FeaturedProjects featured={data.featuredProjects.nodes} />
@@ -97,7 +97,7 @@ export const query = graphql`
           date(formatString: "D MMMM, YYYY")
           title
           repo_link
-          start_date
+          position
           demo_link
           techs
           cover_image {

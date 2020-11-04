@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import StyledSkewedSection from './skewed-section';
-import {  StyledH1Black } from './_shared/styled-headings';
+import { StyledH1Black } from './_shared/styled-headings';
 
 const StyledLogoSection = styled.section`
   width: 100%;
@@ -20,6 +20,7 @@ const StyledFactNumber = styled.section`
     margin-bottom: 1rem;
     font-size: 2rem;
     font-weight: bold;
+    color: var(--bg-color);
   }
 
   & > .fact {
@@ -37,7 +38,7 @@ const StyledFactNumber = styled.section`
       left: -2rem;
       width: 1rem;
       height: 2px;
-      background-color: var(--primary-color);
+      background-color: var(--bg-color);
     }
   }
 `;
@@ -53,8 +54,7 @@ const Facts = () => {
         </StyledFactNumber>
         <StyledFactNumber>
           <span className="number">+400</span>
-          <span className="fact">
-Stack Overflow Reputation</span>
+          <span className="fact">Stack Overflow Reputation</span>
         </StyledFactNumber>
         <StyledFactNumber>
           <span className="number">+7</span>

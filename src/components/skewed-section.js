@@ -13,7 +13,7 @@ const StyledSkewedSection = styled.section`
     margin: 0 auto;
     padding: 1.5em;
     position: relative;
-    
+
     /* uncomment for debuggind purposes */
     /* border: 2px dashed #fff8; */
   }
@@ -30,7 +30,7 @@ const StyledSkewedSection = styled.section`
     transform-origin: 50% 0;
     outline: 1px solid transparent;
     backface-visibility: hidden;
-    background-color: var(--bg-nav-color);
+    background-color: var(--bg-content-color);
   }
 `;
 

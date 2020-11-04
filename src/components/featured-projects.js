@@ -7,7 +7,7 @@ import TextLink from './links/text-link';
 import TechList from './tech-list';
 import { mq } from './_shared/media';
 import { StyledContentLink } from './_shared/styled-content-link';
-import { StyledH1, StyledH2 } from './_shared/styled-headings';
+import { StyledH1, StyledH2, StyledH4 } from './_shared/styled-headings';
 import { StyledImageContainer } from './_shared/styled-image-container';
 import { contentBox, flexCenter, flexEnd } from './_shared/styled-mixins';
 import { StyledSection } from './_shared/styled-section';
@@ -35,7 +35,7 @@ const StyledProjectInfoContainer = styled.section`
 `;
 const StyledDescription = styled.section`
   ${contentBox}
-  max-height: 180px;
+  max-height: 280px;
   position: relative;
   padding: 10px;
 
@@ -80,7 +80,7 @@ const FeaturedProjects = ({ featured }) => {
     const repoLink = project.frontmatter.repo_link;
     const demoLinkLabel = `featured project ${title} demo`;
     const repoLinkLabel = `featured project ${title} repo`;
-    const startDate = project.frontmatter.start_date;
+    const position = project.frontmatter.position;
 
     return (
       <StyledFeaturedProject key={title + index}>
@@ -99,12 +99,19 @@ const FeaturedProjects = ({ featured }) => {
         <StyledProjectInfoContainer>
           <StyledContentLink href={demoLink ? demoLink : repoLink ? repoLink : '#'} target="_blank" rel="noopener">
             <StyledH2>{title}</StyledH2>
+            <StyledH4>{position}</StyledH4>
           </StyledContentLink>
           <StyledDescription dangerouslySetInnerHTML={{ __html: project.html }} />
           <TechList techs={project.frontmatter.techs} />
           <StyledLinkContainer>
             {repoLink && (
-              <a href={repoLink} target="_blank" rel="noopener noreferrer" title="Repository Link" aria-label={repoLinkLabel}>
+              <a
+                href={repoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Repository Link"
+                aria-label={repoLinkLabel}
+              >
                 <Icon icon="github" prefix="fab" />
               </a>
             )}
@@ -121,10 +128,10 @@ const FeaturedProjects = ({ featured }) => {
 
   return (
     <StyledSection id="projects">
-      <StyledH1>Experience</StyledH1>
+      <StyledH1>Work Experience</StyledH1>
       {featuredProjects}
       <StyledArchiveContainer>
-        <TextLink label="View All Experience" link="/experience" />
+        <TextLink label="View All Experience" link="/projects" />
       </StyledArchiveContainer>
     </StyledSection>
   );

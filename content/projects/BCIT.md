@@ -1,13 +1,11 @@
 ---
 featured: true
-date: '2019-12-26'
-start_date: 'Aug 2019'
-end_date: 'present'
+date: '2019-08-01'
 title: 'BCIT'
-cover_image: './images/notebook.jpg'
-repo_link: 'https://github.com/Knochenmark/recipebox'
-demo_link: 'https://knochenmark.github.io/recipebox/'
-techs: ['Typescript', 'React', 'Redux', 'Typestyle']
+position: 'Senior Sharepoint Developer'
+cover_image: './images/BCIT.jpg'
+demo_link: 'https://www.bcit.ca/'
+techs: ['SharePoint 2013', 'SharePoint Upgrade', 'SharePoint 2016', 'ReactJS', 'Sass/Less']
 ---
 
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.
+One of the major tasks I am currently working on is Rebranding their SharePoint 2013 and introducing a better tool(ReactJS) in customized SharePoint.

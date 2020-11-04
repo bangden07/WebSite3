@@ -21,9 +21,9 @@ const Projects = ({
   console.log(nodes);
   return (
     <Layout menuLinks={blogMenuLinks}>
-      <SEO title="Projects" />
+      <SEO title="Experience" />
       <StyledFullHeightSection>
-        <StyledProjectsH1>Projects</StyledProjectsH1>
+        <StyledProjectsH1>Experience</StyledProjectsH1>
         <StyledSeparator />
         <ProjectList projects={nodes} />
       </StyledFullHeightSection>
@@ -44,7 +44,7 @@ export const pageQuery = graphql`
           date(formatString: "D MMMM, YYYY")
           title
           repo_link
-          start_date
+          position
           demo_link
           techs
         }
