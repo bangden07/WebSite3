@@ -1,12 +1,12 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: 'Billy Peralta',
+    title: 'Billy Peralta - SharePoint Contractor in Vancouver',
     titleTemplate: 'Billy Peralta',
     image: '/images/logo2.png',
     author: 'Billy Peralta',
     description: 'Gatsby starter to quickly setup your portfolio and boost it to the next level.',
-    url: 'https://knochenmark.github.io',
+    url: 'https://billyperalta.com',
     paginationPageSize: 4, // Amount of posts displayed per listing page.
   },
   plugins: [
@@ -95,6 +95,16 @@ module.exports = {
         rule: {
           include: /assets/,
         },
+      },
+    },
+
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          'UA-182027525-1', // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
