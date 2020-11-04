@@ -18,7 +18,7 @@ jobs:
     - name: Set up Node.js version
       uses: actions/setup-node@v1
       with:
-        node-version: '10.1'
+        node-version: '10.14'
 
     - name: npm install, build, and test
       run: |
@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'billynewsite'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6fe30368b1bc4c07a7b80b338a566e2e }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e48133b5078c4e6e85d9aef127e40020 }}
         package: .
