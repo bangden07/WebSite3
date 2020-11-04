@@ -20,7 +20,7 @@ const Projects = ({
 }) => {
   return (
     <Layout menuLinks={blogMenuLinks}>
-      <SEO title="Experience" />
+      <SEO title="Experience" description="Billy Peralta - Work Experience" />
       <StyledFullHeightSection>
         <StyledProjectsH1>Experience</StyledProjectsH1>
         <StyledSeparator />
