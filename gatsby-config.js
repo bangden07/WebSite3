@@ -5,7 +5,7 @@ module.exports = {
     titleTemplate: 'Billy Peralta',
     image: '/images/logo2.png',
     author: 'Billy Peralta',
-    description: 'Gatsby starter to quickly setup your portfolio and boost it to the next level.',
+    description: 'Billy Peralta - SharePoint Expert in Vancouver.',
     url: 'https://billyperalta.com',
     paginationPageSize: 4, // Amount of posts displayed per listing page.
   },
