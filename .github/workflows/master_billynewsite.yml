@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'billynewsite'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e48133b5078c4e6e85d9aef127e40020 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_05d02936672347c9b0f59bf48aa5339e }}
         package: .
