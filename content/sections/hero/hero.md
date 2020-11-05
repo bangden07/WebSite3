@@ -1,6 +1,6 @@
 ---
 introduction: "Hello it's me"
-tagline: 'SharePoint Expert'
+tagline: 'SharePoint Freelance Expert'
 cta_label: ''
 cta_link: ''
 ---
