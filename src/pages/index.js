@@ -24,7 +24,19 @@ const Index = ({ data }) => {
 
   return (
     <Layout menuLinks={indexMenuLinks}>
-      <SEO title="Billy Peralta - SharePoint Freelance Expert based in Vancouver" />
+      <SEO title="SharePoint Freelance Expert based in Vancouver" />
+      <script type="application/ld+json">
+        {`{
+  "@context" : "http://schema.org",
+  "@type" : "SoftwareApplication",
+  "name" : "Billy Peralta",
+  "image" : "https://www.billyperalta.com/static/99782b66d82a3e0af80dd61c49926ddf/14b42/me.jpg",
+  "url" : "https://www.billyperalta.com/",
+  "author" : {
+    "@type" : "Person",
+    "name" : "Billy Peralta"
+  }`}
+      </script>
       <Hero data={heroData} />
       <Facts />
       <About data={data.about} />

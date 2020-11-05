@@ -6,7 +6,7 @@ module.exports = {
     image: '/images/logo2.png',
     author: 'Billy Peralta',
     description:
-      'SharePoint Developer in Vancouver with 12+ years SharePoint of experience with both On-premise and M365 Sharepoint',
+      'SharePoint Developer in Vancouver with 12+ years SharePoint of experience with both On-premise and M365(O365) Sharepoint',
     url: 'https://www.billyperalta.com',
     paginationPageSize: 4, // Amount of posts displayed per listing page.
     siteUrl: `https://www.billyperalta.com`,
@@ -110,6 +110,14 @@ module.exports = {
       },
     },
     'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.billyperalta.com',
+        sitemap: 'https://www.billyperalta.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
