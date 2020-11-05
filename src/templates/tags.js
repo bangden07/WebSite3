@@ -8,6 +8,7 @@ import { blogMenuLinks } from '../components/_config/menu-links';
 import { StyledH1, StyledH2 } from '../components/_shared/styled-headings';
 import { flexCenter } from '../components/_shared/styled-mixins';
 import { StyledFullHeightSection } from '../components/_shared/styled-section';
+import SEO from '../components/seo';
 
 const StyledTagsLinkContainer = styled.div`
   ${flexCenter};
@@ -21,10 +22,14 @@ const StyledTagsH1 = styled(StyledH1)`
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
-  const tagHeader = `A collection of ${totalCount} blogs${totalCount === 1 ? '' : 's'}`;
+  const tagHeader = `A collection of ${totalCount} blog${totalCount === 1 ? '' : 's'}`;
 
   return (
     <Layout menuLinks={blogMenuLinks}>
+      <SEO
+        title={`${tag} related blogs created by Billy Peralta for both SharePoint On-Premise and Online`}
+        description="Billy Peralta - List of SharePoint Blog created by Billy Peralta. This is for Both On-Premise and SharePoint Online (M365)"
+      />
       <StyledFullHeightSection>
         <StyledTagsH1>{tag}</StyledTagsH1>
         <StyledTagsLinkContainer>

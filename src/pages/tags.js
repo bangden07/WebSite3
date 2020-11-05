@@ -68,7 +68,7 @@ const TagsPage = ({
 
   return (
     <Layout menuLinks={blogMenuLinks}>
-      <SEO title="Tags" />
+      <SEO title="Tags of Different Blogs created for SharePoint Online and SharePoint On Premise" />
       <StyledFullHeightSection>
         <StyledTagsH1>Tags ({tagCount})</StyledTagsH1>
         <StyledSeparator />

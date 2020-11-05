@@ -50,7 +50,7 @@ const Blog = ({ data }) => {
   return (
     <Layout menuLinks={blogMenuLinks}>
       <SEO
-        title="Blog List"
+        title="List of Blogs created by Billy Peralta for SharePoint On-Premise and SharePoint Online."
         description="Billy Peralta - List of SharePoint Blog created by Billy Peralta. This is for Both On-Premise and SharePoint Online (M365)"
       />
       <StyledFullHeightSection>
