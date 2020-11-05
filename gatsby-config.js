@@ -6,7 +6,7 @@ module.exports = {
     image: '/images/logo2.png',
     author: 'Billy Peralta',
     description:
-      'Billy Peralta - SharePoint Developer in Vancouver with 12+ years of experience with both On-premise and M365',
+      'SharePoint Developer in Vancouver with 12+ years SharePoint of experience with both On-premise and M365 Sharepoint',
     url: 'https://www.billyperalta.com',
     paginationPageSize: 4, // Amount of posts displayed per listing page.
     siteUrl: `https://www.billyperalta.com`,
