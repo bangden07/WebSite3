@@ -82,7 +82,9 @@ const Contact = ({ data }) => {
               <Icon icon="paper-plane" />
               <StyledFormContainer>
                 <StyledForm>My E-Mail</StyledForm>
-                <span>{email}</span>
+                <span>
+                  <a href="mailto:info@billyperalta.com.com">{email}</a>
+                </span>
               </StyledFormContainer>
             </StyledContainer>
           )}
