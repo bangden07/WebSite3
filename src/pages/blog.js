@@ -49,7 +49,10 @@ const Blog = ({ data }) => {
 
   return (
     <Layout menuLinks={blogMenuLinks}>
-      <SEO title="Blog" description="Billy Peralta - Blogs" />
+      <SEO
+        title="Blog List"
+        description="Billy Peralta - List of SharePoint Blog created by Billy Peralta. This is for Both On-Premise and SharePoint Online (M365)"
+      />
       <StyledFullHeightSection>
         {data.allMarkdownRemark.edges.slice(leftCursor, rightCursor).map(({ node }) => {
           const coverImage = node.frontmatter.cover_image ? node.frontmatter.cover_image.childImageSharp.fluid : null;

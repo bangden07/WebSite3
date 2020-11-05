@@ -1,8 +1,8 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: 'Billy Peralta - SharePoint Expert based in Vancouver',
-    titleTemplate: 'Billy Peralta - SharePoint Expert based in Vancouver',
+    title: 'Billy Peralta - SharePoint Expert based in Vancouver s',
+    titleTemplate: '%s · Billy Peralta',
     image: '/images/logo2.png',
     author: 'Billy Peralta',
     description:
