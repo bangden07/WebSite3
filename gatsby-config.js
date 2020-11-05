@@ -7,8 +7,9 @@ module.exports = {
     author: 'Billy Peralta',
     description:
       'Billy Peralta - SharePoint Developer in Vancouver with 12+ years of experience with both On-premise and M365',
-    url: 'https://billyperalta.com',
+    url: 'https://www.billyperalta.com',
     paginationPageSize: 4, // Amount of posts displayed per listing page.
+    siteUrl: `https://www.billyperalta.com`,
   },
   plugins: [
     `gatsby-plugin-stylus`,
@@ -108,6 +109,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-sitemap'
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
