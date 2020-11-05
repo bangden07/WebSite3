@@ -1,11 +1,12 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: 'Billy Peralta - SharePoint Contractor in Vancouver',
-    titleTemplate: 'Billy Peralta',
+    title: 'Billy Peralta - SharePoint Developer in Vancouver',
+    titleTemplate: 'Billy Peralta - SharePoint Contractor in Vancouver',
     image: '/images/logo2.png',
     author: 'Billy Peralta',
-    description: 'Billy Peralta - SharePoint Expert in Vancouver.',
+    description:
+      'Billy Peralta - SharePoint Developer in Vancouver with 12+ years of experience with both On-premise and M365',
     url: 'https://billyperalta.com',
     paginationPageSize: 4, // Amount of posts displayed per listing page.
   },
