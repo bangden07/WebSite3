@@ -1,8 +1,8 @@
 module.exports = {
   pathPrefix: '/',
   siteMetadata: {
-    title: 'Billy Peralta - SharePoint Developer in Vancouver',
-    titleTemplate: 'Billy Peralta - SharePoint Contractor in Vancouver',
+    title: 'Billy Peralta - SharePoint Expert based in Vancouver',
+    titleTemplate: 'Billy Peralta - SharePoint Expert based in Vancouver',
     image: '/images/logo2.png',
     author: 'Billy Peralta',
     description:
@@ -109,7 +109,7 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-sitemap'
+    'gatsby-plugin-sitemap',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

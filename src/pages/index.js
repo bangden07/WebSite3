@@ -24,7 +24,7 @@ const Index = ({ data }) => {
 
   return (
     <Layout menuLinks={indexMenuLinks}>
-      <SEO title="Home" />
+      <SEO title="Billy Peralta - SharePoint Expert based in Vancouver" />
       <Hero data={heroData} />
       <Facts />
       <About data={data.about} />
