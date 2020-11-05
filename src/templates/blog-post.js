@@ -8,6 +8,7 @@ import TagList from '../components/tag-list';
 import { blogMenuLinks } from '../components/_config/menu-links';
 import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledSection } from '../components/_shared/styled-section';
+import SEO from '../components/seo';
 
 const StyledBlogSection = styled(StyledSection)`
   min-height: calc(100vh - var(--header-height));
