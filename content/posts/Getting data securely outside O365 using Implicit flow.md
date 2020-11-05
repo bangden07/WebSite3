@@ -76,363 +76,233 @@ Done setting up in Azure, now lets move to coding :)
 
 In your reactjs project install necessary packages
 
-    npm i axios
-    npm i npm i react-aad-msal
+```js {numberLines}
+npm i axios
+npm i npm i react-aad-msal
+```
 
 Create a new file inside your src folder and name it “authProvider.js”. Please change the tenant ID and Client id based generated value from the app you created earlier.
 
-    import { MsalAuthProvider, LoginType } from 'react-aad-msal';
+```js {numberLines}
+import { MsalAuthProvider, LoginType } from 'react-aad-msal';
 
-    import { Logger, LogLevel } from 'msal';
+import { Logger, LogLevel } from 'msal';
 
-    export const authProvider = new MsalAuthProvider(
+export const authProvider = new MsalAuthProvider(
+  {
+    auth: {
+      authority: 'https://login.microsoftonline.com/[Enter Tenant ID]', //
 
-    {
+      clientId: '[Enter Client ID]',
 
-        auth: {
+      postLogoutRedirectUri: 'https://localhost:3000/#',
 
-        authority:
+      redirectUri: 'https://localhost:3000/#',
 
-            'https://login.microsoftonline.com/[Enter Tenant ID]', //
+      validateAuthority: true,
 
-        clientId: '[Enter Client ID]',
+      // After being redirected to the "redirectUri" page, should user
 
-        postLogoutRedirectUri: 'https://localhost:3000/#',
+      // be redirected back to the Url where their login originated from?
 
-        redirectUri: 'https://localhost:3000/#',
-
-        validateAuthority: true,
-
-
-
-        // After being redirected to the "redirectUri" page, should user
-
-        // be redirected back to the Url where their login originated from?
-
-        navigateToLoginRequestUrl: true,
-
-        },
-
-        // Enable logging of MSAL events for easier troubleshooting.
-
-        // This should be disabled in production builds.
-
-        system: {
-
-        logger: new Logger(
-
-            (logLevel, message, containsPii) => {
-
-            console.log('[MSAL]', message);
-
-            },
-
-            {
-
-            level: LogLevel.Verbose,
-
-            piiLoggingEnabled: false,
-
-            }
-
-        ),
-
-        },
-
-        cache: {
-
-        cacheLocation: 'localStorage',
-
-        storeAuthStateInCookie: true,
-
-        },
-
+      navigateToLoginRequestUrl: true,
     },
 
-    {
+    // Enable logging of MSAL events for easier troubleshooting.
 
-        scopes: ['AllSites.Read'],
+    // This should be disabled in production builds.
 
+    system: {
+      logger: new Logger(
+        (logLevel, message, containsPii) => {
+          console.log('[MSAL]', message);
+        },
+
+        {
+          level: LogLevel.Verbose,
+
+          piiLoggingEnabled: false,
+        }
+      ),
     },
 
-    {
+    cache: {
+      cacheLocation: 'localStorage',
 
-        loginType: LoginType.Popup,
+      storeAuthStateInCookie: true,
+    },
+  },
 
-        // When a token is refreshed it will be done by loading a page in an iframe.
+  {
+    scopes: ['AllSites.Read'],
+  },
 
-        // Rather than reloading the same page, we can point to an empty html file which will prevent
+  {
+    loginType: LoginType.Popup,
 
-        // site resources from being loaded twice.
+    // When a token is refreshed it will be done by loading a page in an iframe.
 
-        tokenRefreshUri: window.location.origin + '/auth.html',
+    // Rather than reloading the same page, we can point to an empty html file which will prevent
 
-    }
+    // site resources from being loaded twice.
 
-    );
+    tokenRefreshUri: window.location.origin + '/auth.html',
+  }
+);
+```
 
 Now create another file named “MainFile.jsx”. This would hold all the logic together.
 
-    import React, { useState, useEffect } from 'react';
+```js {numberLines}
+import React, { useState, useEffect } from 'react';
 
-    import { AzureAD, AuthenticationState } from 'react-aad-msal';
+import { AzureAD, AuthenticationState } from 'react-aad-msal';
 
-    import axios from 'axios';
+import axios from 'axios';
 
+// Import the authentication provider which holds the default settings
 
+import { authProvider } from './authProvider';
 
-    // Import the authentication provider which holds the default settings
+const MainFile = (props) => {
+  const handleACToken = async () => {
+    //Let get first our Access Token
 
-    import { authProvider } from './authProvider';
+    const token = await authProvider.getAccessToken();
 
+    let farmUrl = '[ChangeYourOwnFarmUrl].sharepoint.com'; // Feel free to change this one with you FARM url
 
+    let siteUrl = 'sites/DemoSiteForGraph'; //Note that this site collection should exists
 
-    const MainFile = (props) => {
+    // Once we got it, we will as header when we call graph API that will show details of target site collection
 
-    const handleACToken = async () => {
+    const request = await axios({
+      method: 'GET',
 
-        //Let get first our Access Token
+      url: `https://graph.microsoft.com/v1.0/sites/${farmUrl}:/${siteUrl}?$select=id`,
 
-        const token = await authProvider.getAccessToken();
+      headers: {
+        Accept: 'application/json',
 
+        'content-Type': 'application/json',
 
+        Authorization: `Bearer ${token.accessToken}`,
+      },
+    });
 
+    alert(request.data.id);
 
+    return request;
+  };
 
-        let farmUrl = '[ChangeYourOwnFarmUrl].sharepoint.com'; // Feel free to change this one with you FARM url
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Welcome to the react-aad-msal sample</h1>
+      </header>
 
-        let siteUrl = 'sites/DemoSiteForGraph';//Note that this site collection should exists
+      <AzureAD provider={authProvider}>
+        {({ accountInfo, authenticationState, error, login }) => {
+          return (
+            <React.Fragment>
+              {authenticationState === AuthenticationState.Unauthenticated && (
+                <div>
+                  <button className="Button" onClick={() => login()}>
+                    Login
+                  </button>{' '}
+                </div>
+              )}
 
-        // Once we got it, we will as header when we call graph API that will show details of target site collection
+              {authenticationState === AuthenticationState.InProgress && <div>Logging in</div>}
 
-        const request = await axios({
+              {authenticationState === AuthenticationState.InProgress && <div>Logging in</div>}
 
-        method: 'GET',
+              {authenticationState === AuthenticationState.Authenticated && (
+                <div>
+                  <button className="Button" onClick={() => handleACToken()}>
+                    AC
+                  </button>{' '}
+                </div>
+              )}
 
-        url: `https://graph.microsoft.com/v1.0/sites/${farmUrl}:/${siteUrl}?$select=id`,
+              <div className="SampleContainer">
+                <div className="SampleBox">
+                  <h2 className="SampleHeader">Authenticated Values</h2>
 
-        headers: {
+                  <p>When logged in, this box will show your tokens and user info</p>
 
-            Accept: 'application/json',
+                  {accountInfo && (
+                    <div style={{ wordWrap: 'break-word' }}>
+                      <p>
+                        <span style={{ fontWeight: 'bold' }}>ID Token:</span> {accountInfo.jwtIdToken}
+                      </p>
 
-            'content-Type': 'application/json',
+                      <p>
+                        <span style={{ fontWeight: 'bold' }}>Username:</span> {accountInfo.account.userName}
+                      </p>
 
-            Authorization: `Bearer ${token.accessToken}`,
+                      <p>
+                        <span style={{ fontWeight: 'bold' }}>Access Token:</span> {accountInfo.jwtAccessToken}
+                      </p>
 
-        },
-
-        });
-
-        alert(request.data.id);
-
-        return request;
-
-    };
-
-
-
-    return (
-
-        <div className="App">
-
-        <header className="App-header">
-
-            <h1 className="App-title">Welcome to the react-aad-msal sample</h1>
-
-        </header>
-
-
-
-        <AzureAD provider={authProvider}>
-
-            {({ accountInfo, authenticationState, error, login }) => {
-
-            return (
-
-                <React.Fragment>
-
-                {authenticationState === AuthenticationState.Unauthenticated && (
-
-                    <div>
-
-                    <button className="Button" onClick={() => login()}>
-
-                        Login
-
-                    </button>{' '}
-
+                      <p>
+                        <span style={{ fontWeight: 'bold' }}>Name:</span> {accountInfo.account.name}
+                      </p>
                     </div>
-
-                )}
-
-
-
-                {authenticationState === AuthenticationState.InProgress && (
-
-                    <div>Logging in</div>
-
-                )}
-
-
-
-                {authenticationState === AuthenticationState.InProgress && (
-
-                    <div>Logging in</div>
-
-                )}
-
-                {authenticationState === AuthenticationState.Authenticated && (
-
-                    <div>
-
-                    <button className="Button" onClick={() => handleACToken()}>
-
-                        AC
-
-                    </button>{' '}
-
-                    </div>
-
-                )}
-
-
-
-                <div className="SampleContainer">
-
-                    <div className="SampleBox">
-
-                    <h2 className="SampleHeader">Authenticated Values</h2>
-
-                    <p>
-
-                        When logged in, this box will show your tokens and user info
-
-                    </p>
-
-                    {accountInfo && (
-
-                        <div style={{ wordWrap: 'break-word' }}>
-
-                        <p>
-
-                            <span style={{ fontWeight: 'bold' }}>ID Token:</span>{' '}
-
-                            {accountInfo.jwtIdToken}
-
-                        </p>
-
-                        <p>
-
-                            <span style={{ fontWeight: 'bold' }}>Username:</span>{' '}
-
-                            {accountInfo.account.userName}
-
-                        </p>
-
-                        <p>
-
-                            <span style={{ fontWeight: 'bold' }}>
-
-                            Access Token:
-
-                            </span>{' '}
-
-                            {accountInfo.jwtAccessToken}
-
-                        </p>
-
-                        <p>
-
-                            <span style={{ fontWeight: 'bold' }}>Name:</span>{' '}
-
-                            {accountInfo.account.name}
-
-                        </p>
-
-                        </div>
-
-                    )}
-
-                    </div>
-
-                    <div className="SampleBox">
-
-                    <h2 className="SampleHeader">Errors</h2>
-
-                    <p>
-
-                        If authentication fails, this box will have the errors that
-
-                        occurred
-
-                    </p>
-
-                    {error && (
-
-                        <div style={{ wordWrap: 'break-word' }}>
-
-                        <p>
-
-                            <span style={{ fontWeight: 'bold' }}>errorCode:</span>{' '}
-
-                            {error.errorCode}
-
-                        </p>
-
-                        <p>
-
-                            <span style={{ fontWeight: 'bold' }}>
-
-                            errorMessage:
-
-                            </span>{' '}
-
-                            {error.errorMessage}
-
-                        </p>
-
-                        </div>
-
-                    )}
-
-                    </div>
-
+                  )}
                 </div>
 
-                </React.Fragment>
+                <div className="SampleBox">
+                  <h2 className="SampleHeader">Errors</h2>
 
-            );
+                  <p>If authentication fails, this box will have the errors that occurred</p>
 
-            }}
+                  {error && (
+                    <div style={{ wordWrap: 'break-word' }}>
+                      <p>
+                        <span style={{ fontWeight: 'bold' }}>errorCode:</span> {error.errorCode}
+                      </p>
 
-        </AzureAD>
-
-        </div>
-
-    );
-
-    };
+                      <p>
+                        <span style={{ fontWeight: 'bold' }}>errorMessage:</span> {error.errorMessage}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </React.Fragment>
+          );
+        }}
+      </AzureAD>
+    </div>
+  );
+};
+```
 
 Now in our index.jsx we will call and use our “MainFile.jsx” component
 
-    import React from 'react';
+```js {numberLines}
+import React from 'react';
 
-    import MainFile from './MainFile;
-
-
-    const App = () => {
-
-    return < MainFile />;
-
-    };
+import MainFile from './MainFile;
 
 
+const App = () => {
 
-    export default App;
+return < MainFile />;
+
+};
+
+
+
+export default App;
+```
 
 Now lets try to run our code
 
-    npm start
+```js {numberLines}
+npm start
+```
 
 Once the page loads try to click on the Login Button
 

@@ -75,6 +75,12 @@ module.exports = {
               maxWidth: 590,
             },
           },
+          {
+            resolve: `gatsby-remark-vscode`,
+            options: {
+              theme: 'Abyss' // Or install your favorite theme from GitHub
+            }
+          },
           `gatsby-remark-reading-time`,
         ],
       },
@@ -118,6 +124,7 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
+    
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
