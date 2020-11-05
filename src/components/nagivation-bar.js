@@ -8,7 +8,7 @@ import { StyledIndexNumber } from './_shared/styled-index-number';
 import { flexCenter } from './_shared/styled-mixins';
 
 const StyledNav = styled.nav`
-  background-color: var(--bg-content-color);
+  background-color: var(--bg-nav-color);
   border-top: 1px solid var(--border-color);
   flex: 1;
   display: flex;
