@@ -37,6 +37,7 @@ const Index = ({ data }) => {
   "author" : {
     "@type" : "Person",
     "name" : "Billy Peralta"
+  }
   }`}
       </script>
       <Hero data={heroData} />
