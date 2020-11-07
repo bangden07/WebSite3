@@ -4,6 +4,7 @@ title: 'Creating a cascading dropdown in PowerApps'
 tags: ['O365', 'SharePoint Online', 'PowerApps']
 published: true
 cover_image: ./images/CascadingPowerApps/Main.jpg
+linkedin_image: ./images/CascadingPowerApps/Main.jpg
 canonical_url: false
 description: 'Adding a cascading dropdown'
 ---

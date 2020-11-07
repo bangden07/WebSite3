@@ -5,6 +5,7 @@ tags: ['SharePoint', 'Migration', 'Planning']
 published: true
 canonical_url: false
 cover_image: ./images/MigrationPlanning/Main.jpg
+linkedin_image: ./images/MigrationPlanning/Main.jpg
 description: 'Access the data inside your O365 securely even your application is outside O365.'
 ---
 

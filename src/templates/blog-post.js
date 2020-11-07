@@ -40,11 +40,13 @@ const BlogPost = ({ data }) => {
   const readingTime = data.markdownRemark.fields.readingTime.text;
   const post = data.markdownRemark;
   const coverImage = post.frontmatter.cover_image ? post.frontmatter.cover_image.childImageSharp.fluid : null;
+  const linkedin_image = post.frontmatter.linkedin_image ? post.frontmatter.linkedin_image.childImageSharp.fluid : null;
+
   const { tags = [], title, date } = post.frontmatter;
 
   return (
     <Layout menuLinks={blogMenuLinks}>
-      <SEO title={`SharePoint Blog - ${title}`} description={title} image={coverImage}/>
+      <SEO title={`SharePoint Blog - ${title}`} description={title} image={linkedin_image}/>
       <StyledBlogSection>
         <StyledBlogTitle>{title}</StyledBlogTitle>
         <StyledDate>
@@ -75,6 +77,13 @@ export const query = graphql`
         cover_image {
           childImageSharp {
             fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        linkedin_image{
+          childImageSharp {
+            fluid(maxWidth: 1200, maxHeight: 627) {
               ...GatsbyImageSharpFluid
             }
           }

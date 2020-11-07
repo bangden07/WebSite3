@@ -5,6 +5,7 @@ tags: ['O365', 'SharePoint Online', 'GraphApi']
 published: true
 canonical_url: false
 cover_image: ./images/implicitflow/Main.jpg
+linkedin_image: ./images/implicitflow/Main.jpg
 description: 'Access the data inside your O365 securely even your application is outside O365.'
 ---
 

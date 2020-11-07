@@ -4,6 +4,7 @@ title: 'Add Refiners for your Site Collection'
 tags: ['O365', 'SharePoint Online', 'Search Refiner']
 published: true
 cover_image: ./images/Refiners/Refiners.jpg
+linkedin_image: ./images/Refiners/Refiners.jpg
 canonical_url: false
 description: 'Adding search refiner for your site collection to make it more searchable for our users.'
 ---

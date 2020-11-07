@@ -12,7 +12,7 @@ import RecentPosts from '../components/recent-posts';
 import SEO from '../components/seo';
 import { indexMenuLinks } from '../components/_config/menu-links';
 
-import image from "../../content/sections/about/me.jpg"
+import image from "../../content/sections/about/previewPic.jpg"
 
 const Index = ({ data }) => {
   const heroData = {

@@ -8,7 +8,7 @@ const SEO = ({ title, description, image, article }) => {
   const { pathname } = useLocation();
   const { site } = useStaticQuery(query);
 
-  const { defaultTitle, titleTemplate, defaultDescription, siteUrl, defaultImage, twitterUsername } = site.siteMetadata;
+  const { defaultTitle, titleTemplate, defaultDescription, siteUrl, defaultImage } = site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
