@@ -44,7 +44,7 @@ const BlogPost = ({ data }) => {
 
   return (
     <Layout menuLinks={blogMenuLinks}>
-      <SEO title={`SharePoint Blog - ${title}`} description={title} />
+      <SEO title={`SharePoint Blog - ${title}`} description={title} image={coverImage}/>
       <StyledBlogSection>
         <StyledBlogTitle>{title}</StyledBlogTitle>
         <StyledDate>

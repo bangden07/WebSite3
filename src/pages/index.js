@@ -12,6 +12,8 @@ import RecentPosts from '../components/recent-posts';
 import SEO from '../components/seo';
 import { indexMenuLinks } from '../components/_config/menu-links';
 
+import image from "../../content/sections/about/me.jpg"
+
 const Index = ({ data }) => {
   const heroData = {
     author: data.site.siteMetadata.author,
@@ -24,13 +26,13 @@ const Index = ({ data }) => {
 
   return (
     <Layout menuLinks={indexMenuLinks}>
-      <SEO title="SharePoint Freelance Expert based in Vancouver" />
+      <SEO title="SharePoint Freelance Expert based in Vancouver" image={image}/>
       <script type="application/ld+json">
         {`{
   "@context" : "http://schema.org",
   "@type" : "SoftwareApplication",
   "name" : "Billy Peralta",
-  "image" : "https://www.billyperalta.com/static/99782b66d82a3e0af80dd61c49926ddf/14b42/me.jpg",
+  "image" : ${image},
   "url" : "https://www.billyperalta.com/",
   "author" : {
     "@type" : "Person",
