@@ -82,6 +82,13 @@ module.exports = {
             }
           },
           `gatsby-remark-reading-time`,
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "noopener noreferrer"
+            }
+          }
         ],
       },
     },
@@ -124,7 +131,14 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
-    
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        includeInDevelopment: true, // optional parameter to include script in development
+        id: 2086389,
+        sv: 6,
+      },
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
