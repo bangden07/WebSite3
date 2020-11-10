@@ -6,7 +6,7 @@ published: true
 cover_image: ./images/SPfxCrud/Main.jpg
 linkedin_image: ./images/SPfxCrud/Main.jpg
 canonical_url: false
-description: 'Step by step tutorial on how to do CRUD operation with SPFx in a SharePoint Online using ReactJS and PnPjs. '
+description: 'Step by step tutorial on how to do CRUD operation with SPFx in a SharePoint Online using ReactJS and PnPjs. Hopefully this would help you understand on how to do CRUD Operation in an SPFx webpart using ReactJS and PnPjs.'
 ---
 
 ###Requirements
@@ -335,7 +335,7 @@ gulp serve
 
 15. Once created, we will not try the webpart in our site collection through our workbench. You can go to the workbench through this url
 
-    https://[MyO365Url]/sites/[SubSite]/\_layouts/15/workbench.aspx
+`https://[MyO365Url]/sites/[SubSite]/_layouts/15/workbench.aspx`
 
 16. Now Lets try to deploy it, by searching the "CRUDWebPart"
 
