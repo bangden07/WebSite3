@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Layout from '../components/layout';
@@ -42,7 +42,7 @@ const Tags = ({ pageContext, data }) => {
             const { title } = node.frontmatter;
             return (
               <li key={slug}>
-                <Link to={`blog/${slug}`}>{title}</Link>
+                <a href={`/blog${slug}`}>{title}</a>
               </li>
             );
           })}
