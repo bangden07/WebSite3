@@ -32,7 +32,7 @@ const Index = ({ data }) => {
   "@context" : "http://schema.org",
   "@type" : "SoftwareApplication",
   "name" : "Billy Peralta",
-  "image" : "${image}",
+  "image" : "https://www.billyperalta.com${image}",
   "url" : "https://www.billyperalta.com/",
   "author" : {
     "@type" : "Person",
