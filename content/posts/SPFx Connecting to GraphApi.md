@@ -31,7 +31,7 @@ yo @microsoft/sharepoint
 
 2. It will ask you the following information
 
-![yo @microsoft/sharepoint](./images/SPfxCrud/0.jpg)
+![yo @microsoft/sharepoint](./images/SPfxGraphApi/yo.JPG)
 
 > What is your solution name? **_GRAPHAPIBASIC_**
 

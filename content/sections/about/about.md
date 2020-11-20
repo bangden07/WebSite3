@@ -1,5 +1,5 @@
 ---
-title: 'SharePoint Journey'
+title: 'My SharePoint Journey'
 about_image: './me.jpg'
 techs: ['SharePoint', 'React', '.Net Core', 'Sass/Less']
 ---
