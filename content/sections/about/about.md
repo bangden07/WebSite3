@@ -1,7 +1,7 @@
 ---
 title: 'My SharePoint Journey'
 about_image: './me.jpg'
-techs: ['SharePoint', 'React', '.Net Core', 'Sass/Less']
+techs: ['SharePoint', 'ReactJS', 'TypeScript', 'Javascript', '.Net Core', 'Sass/Less']
 ---
 
 Experienced and accomplished IT professional based in Canada with over Twelve years of experience looking to leverage extensive background in Web Development and Server Administration. With a specialization with SharePoint(On-Premise and O365) and Azure Cloud development and administration. Dedicated and motivated in learning new technology.
