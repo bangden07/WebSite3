@@ -21,6 +21,12 @@ const StyledTextSection = styled.section`
   white-space: pre-line;
 `;
 
+const NewsBox = styled.section`
+  border-color: var(--bg-content-color);
+  border-style: solid;
+  border-width: 1px;
+`;
+
 const About = ({ data }) => {
   const {
     frontmatter: { title, techs, about_image },

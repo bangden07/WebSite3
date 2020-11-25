@@ -6,7 +6,7 @@ import { flexCenter } from './../_shared/styled-mixins';
 export const StyledButtonLink = styled.a`
   ${flexCenter};
   text-decoration: none;
-  color: var(--bg-content-color) !important;
+  color: var(--bg-color) !important;
   background-color: var(--title-color);
   font-size: 0.9rem;
   font-weight: 500;
