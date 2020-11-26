@@ -40,7 +40,6 @@ const Index = ({ data }) => {
   }
   }`}
       </script>
-      <script data-ad-client="ca-pub-5060970476414755" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <Hero data={heroData} />
       <Facts />
       <About data={data.about} />
