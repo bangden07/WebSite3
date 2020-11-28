@@ -78,17 +78,17 @@ module.exports = {
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              theme: 'Abyss' // Or install your favorite theme from GitHub
-            }
+              theme: 'Abyss', // Or install your favorite theme from GitHub
+            },
           },
           `gatsby-remark-reading-time`,
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: 'gatsby-remark-external-links',
             options: {
-              target: "_blank",
-              rel: "noopener noreferrer"
-            }
-          }
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+          },
         ],
       },
     },
@@ -137,12 +137,6 @@ module.exports = {
         includeInDevelopment: true, // optional parameter to include script in development
         id: 2089966,
         sv: 6,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-adsense`,
-      options: {
-        publisherId: `ca-pub-5060970476414755`
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
