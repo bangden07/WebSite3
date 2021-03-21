@@ -9,13 +9,13 @@ canonical_url: false
 description: 'Guide on how to recreate Content Organizer in SharePoint Online with the use of PowerAutomate'
 ---
 
-Content Organizer is a feature in SharePoint that allows end user to create rules that will help the team automatically organize their files based on the conditions/rules that was created.
+Content Organizer is a feature in SharePoint that allows the end-user to create rules that will help the team automatically organize their files based on the conditions/rules that were created.
 
 Since in SharePoint Online the “Incoming Email” feature that we enjoy in SharePoint 2016, 2013, 2010 is no longer available. This guide will show you how to recreate that feature through the use of Power Automate in SharePoint Online.
 
 ## Create shared mailbox
 
-First we will a shared mailbox in M365/O365 that we can use in our PowerAutomate later
+First, we will a shared mailbox in M365/O365 that we can use in our PowerAutomate later
 
 - Let go to our Admin Center
 
@@ -39,7 +39,7 @@ _Note: that you might encounter this error when enabling_
 
 **"The Site scoped feature being activated has a dependency on hidden Site Collection scoped feature 'FeatureDefinition/15/0c8a9a47-22a9-4798-82f1-00e62a96006e' (ID: '0c8a9a47-22a9-4798-82f1-00e62a96006e'). Hidden features cannot be auto-activated across scopes. There may be one or more visible Site Collection scoped features that auto-activate the dependent hidden feature."**
 
-To fix this error you will need to enable first "SharePoint Server Standard Site Collection features" and "SharePoint Server Enterprise Site Collection features" first. Which both can be found in the "Site Collection Features" in the "Site Settings"
+To fix this error you will need to enable first "SharePoint Server Standard Site Collection features" and "SharePoint Server Enterprise Site Collection features" first. Both can be found in the "Site Collection Features" in the "Site Settings"
 
 - Once the Content Organizer is activiated, it will create a "Drop Off Library"
 
@@ -65,7 +65,7 @@ To fix this error you will need to enable first "SharePoint Server Standard Site
 
 ![Adding our shared mailbox email address](./images/SharedMailboxes/8.jpg)
 
-- After the trigger we will add an action "Send an HTTP request to SharePoint". This will take care of retrieving our rules that we created in the "Content Organizer" the using it to sort out email. Kindly fill up the following information
+- After the trigger, we will add an action "Send an HTTP request to SharePoint". This will take care of retrieving our rules that we created in the "Content Organizer" the using it to sort out an email. Kindly fill up the following information
 
 Site Address: Try to find your site collection here
 Method : Get
@@ -112,7 +112,7 @@ Headers: "Accept" "application/json;odata=nometadata"
 
 - After that we will use the a loop to loop inside the value and loop to each rules
 
-- After looping we will now it to get the Routing condition to upload the whole email in SharePoint. To export we can use the "Export Email (V2)" action then use the "Create File" action of sharepoint
+- After looping we will now it to get the Routing condition to upload the whole email in SharePoint. To export we can use the "Export Email (V2)" action then use the "Create File" action of SharePoint
 
 ![Exporting the email from shared mailbox and then uploading it to SharePoint](./images/SharedMailboxes/11.jpg)
 
@@ -120,6 +120,6 @@ Headers: "Accept" "application/json;odata=nometadata"
 
 ![Sending email to our Shared Mailbox with the subject we entered](./images/SharedMailboxes/12.jpg)
 
-- After couple of minutes it should upload our whole email to the "Toaster and Bread" in Sharepoint to the folder we specified in our Content Organizer rule.
+- After a couple of minutes it should upload our whole email to the "Toaster and Bread" in Sharepoint to the folder we specified in our Content Organizer rule.
 
 ![After waiting the whole email is now uploaded to SharePoint and to the appropriate Location we specified.](./images/SharedMailboxes/13.jpg)
