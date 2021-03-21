@@ -1,7 +1,7 @@
 ---
 date: 2020-10-10
 title: 'Tips for planning your next SharePoint Migration Project'
-tags: ['SharePoint', 'Migration', 'Planning']
+tags: ['M365', 'O365', 'SharePoint', 'Migration', 'Planning']
 published: true
 canonical_url: false
 cover_image: ./images/MigrationPlanning/Main.jpg
