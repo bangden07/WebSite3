@@ -65,6 +65,19 @@ Before we can start we need the following:
 
 ![Selecting "When a new email arrives in a shared mailbox(V2)" trigger](./images/OCR/3.JPG)
 
+Note: You need to make sure that "Only with Attachments" and "Include Attachments" is set to Yes 
+
+![Power Automate](./images/OCR/15.JPG)
+
+If you didnt set it to yes, you will encounter the error below
+```
+
+{"operationStatus":"Error","error":{"type":"Error","code":"InvalidPredictionInput","message":"The base 64 binary content is missing for input single","properties":{"BackendErrorCode":"InvalidInferenceInput","DependencyHttpStatusCode":"400"},"innerErrors":[{"scope":"Record","target":"single","code":"InvalidRecord","type":"Error","properties":{"MlIssueCode":"InvalidRecord","MlIssueTarget":"single"}}]}}
+
+```
+
+
+
 3. Enter in the email address of the shared mailbox you want to use 
 
 ![Selecting my shared mailbox](./images/OCR/4.jpg)
