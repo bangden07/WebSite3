@@ -12,7 +12,7 @@ import RecentPosts from '../components/recent-posts';
 import SEO from '../components/seo';
 import { indexMenuLinks } from '../components/_config/menu-links';
 
-import image from "../../content/sections/about/previewPic.jpg"
+import image from '../../content/sections/about/previewPic.jpg';
 
 const Index = ({ data }) => {
   const heroData = {
@@ -26,7 +26,7 @@ const Index = ({ data }) => {
 
   return (
     <Layout menuLinks={indexMenuLinks}>
-      <SEO title="SharePoint Freelance Expert based in Vancouver" image={image}/>
+      <SEO title="SharePoint Freelance Expert based in Vancouver" image={image} />
       <script type="application/ld+json">
         {`{
   "@context" : "http://schema.org",
@@ -109,7 +109,7 @@ export const query = graphql`
     ) {
       nodes {
         frontmatter {
-          date(formatString: "D MMMM, YYYY")
+          date(formatString: "YYYY-MM-DD")
           title
           repo_link
           position
@@ -137,7 +137,7 @@ export const query = graphql`
           frontmatter {
             title
             tags
-            date(formatString: "D MMMM, YYYY")
+            date(formatString: "YYYY-MM-DD")
             description
             cover_image {
               childImageSharp {
