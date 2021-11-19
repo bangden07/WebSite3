@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import Layout from '../components/layout';
@@ -40,8 +41,12 @@ const StyledBlogText = styled.div`
 const BlogPost = ({ data }) => {
   const readingTime = data.markdownRemark.fields.readingTime.text;
   const post = data.markdownRemark;
-  const coverImage = post.frontmatter.cover_image ? post.frontmatter.cover_image.childImageSharp.fluid : null;
-  const linkedin_image = post.frontmatter.linkedin_image ? post.frontmatter.linkedin_image.childImageSharp.fluid : null;
+  const coverImage = post.frontmatter.cover_image
+    ? getImage(post.frontmatter.cover_image.childImageSharp.gatsbyImageData)
+    : null;
+  const linkedin_image = post.frontmatter.linkedin_image
+    ? post.frontmatter.linkedin_image.childImageSharp.gatsbyImageData
+    : null;
   const relatePost = data.allMarkdownRemark.edges;
 
   const { tags = [], title, date } = post.frontmatter;
@@ -55,7 +60,7 @@ const BlogPost = ({ data }) => {
           Posted {date}. <span>{readingTime}.</span>
         </StyledDate>
         <TagList tags={tags} />
-        {coverImage && <Img fluid={coverImage} />}
+        {coverImage && <GatsbyImage image={coverImage} />}
         <StyledBlogText dangerouslySetInnerHTML={{ __html: post.html }} />
         <RelatedPosts data={relatePost}></RelatedPosts>
       </StyledBlogSection>
@@ -79,16 +84,12 @@ export const query = graphql`
         date(formatString: "YYYY-MM-DD")
         cover_image {
           childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 800, layout: CONSTRAINED)
           }
         }
         linkedin_image {
           childImageSharp {
-            fluid(maxWidth: 1200, maxHeight: 627) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
@@ -108,9 +109,7 @@ export const query = graphql`
             title
             cover_image {
               childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(width: 800, layout: CONSTRAINED)
               }
             }
             description

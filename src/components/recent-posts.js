@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextLink from './links/text-link';
@@ -75,7 +76,7 @@ const RecentPosts = ({ data }) => {
   const recentPosts = data.map((post) => {
     const { title, tags, description, date } = post.node.frontmatter;
     const coverImage = post.node.frontmatter.cover_image
-      ? post.node.frontmatter.cover_image.childImageSharp.fluid
+      ? getImage(post.node.frontmatter.cover_image.childImageSharp.gatsbyImageData)
       : null;
 
     const link = `/blog` + post.node.fields.slug;
@@ -90,7 +91,7 @@ const RecentPosts = ({ data }) => {
           <span>{day}</span>
         </StyledDateOverlay>
         <Link to={link} aria-label={`recent post ${title}`}>
-          <StyledImageContainer>{coverImage && <Img fluid={coverImage} />}</StyledImageContainer>
+          <StyledImageContainer>{coverImage && <GatsbyImage image={coverImage} />}</StyledImageContainer>
         </Link>
         <TagList tags={tags} />
         <StyledTitleLink to={link}>

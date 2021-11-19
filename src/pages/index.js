@@ -57,113 +57,100 @@ Index.propTypes = {
 
 export default Index;
 
-export const query = graphql`
-  {
-    site {
-      siteMetadata {
-        author
+export const query = graphql`{
+  site {
+    siteMetadata {
+      author
+    }
+  }
+  hero: markdownRemark(fileAbsolutePath: {regex: "/content/sections/hero/"}) {
+    frontmatter {
+      introduction
+      tagline
+      cta_label
+      cta_link
+    }
+    html
+  }
+  about: markdownRemark(fileAbsolutePath: {regex: "/content/sections/about/"}) {
+    frontmatter {
+      title
+      techs
+      about_image {
+        childImageSharp {
+          gatsbyImageData(width: 800, layout: CONSTRAINED)
+        }
       }
     }
-
-    hero: markdownRemark(fileAbsolutePath: { regex: "/content/sections/hero/" }) {
-      frontmatter {
-        introduction
-        tagline
-        cta_label
-        cta_link
+    html
+  }
+  cards: markdownRemark(fileAbsolutePath: {regex: "/content/sections/cards/"}) {
+    frontmatter {
+      cards {
+        label
+        icon
+        prefix
+        description
       }
-      html
     }
-
-    about: markdownRemark(fileAbsolutePath: { regex: "/content/sections/about/" }) {
+    html
+  }
+  featuredProjects: allMarkdownRemark(
+    limit: 3
+    sort: {order: DESC, fields: frontmatter___date}
+    filter: {fileAbsolutePath: {regex: "/content/projects/"}, frontmatter: {featured: {eq: true}}}
+  ) {
+    nodes {
       frontmatter {
+        date(formatString: "YYYY-MM-DD")
         title
+        repo_link
+        position
+        demo_link
         techs
-        about_image {
+        cover_image {
           childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 800, layout: CONSTRAINED)
           }
         }
-      }
-      html
-    }
-
-    cards: markdownRemark(fileAbsolutePath: { regex: "/content/sections/cards/" }) {
-      frontmatter {
-        cards {
-          label
-          icon
-          prefix
-          description
-        }
-      }
-      html
-    }
-
-    featuredProjects: allMarkdownRemark(
-      limit: 3
-      sort: { order: DESC, fields: frontmatter___date }
-      filter: { fileAbsolutePath: { regex: "/content/projects/" }, frontmatter: { featured: { eq: true } } }
-    ) {
-      nodes {
-        frontmatter {
-          date(formatString: "YYYY-MM-DD")
-          title
-          repo_link
-          position
-          demo_link
-          techs
-          cover_image {
-            childImageSharp {
-              fluid(maxWidth: 800) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-        html
-      }
-    }
-
-    blog: allMarkdownRemark(
-      sort: { order: DESC, fields: frontmatter___date }
-      limit: 4
-      filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { published: { ne: false } } }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            tags
-            date(formatString: "YYYY-MM-DD")
-            description
-            cover_image {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          excerpt
-          fields {
-            slug
-          }
-        }
-      }
-    }
-
-    contact: markdownRemark(fileAbsolutePath: { regex: "/content/sections/contact/" }) {
-      frontmatter {
-        phone
-        email
-        address
-        linkedIn
-        linkedInAddress
       }
       html
     }
   }
+  blog: allMarkdownRemark(
+    sort: {order: DESC, fields: frontmatter___date}
+    limit: 4
+    filter: {fileAbsolutePath: {regex: "/content/posts/"}, frontmatter: {published: {ne: false}}}
+  ) {
+    edges {
+      node {
+        frontmatter {
+          title
+          tags
+          date(formatString: "YYYY-MM-DD")
+          description
+          cover_image {
+            childImageSharp {
+              gatsbyImageData(width: 800, layout: CONSTRAINED)
+            }
+          }
+        }
+        excerpt
+        fields {
+          slug
+        }
+      }
+    }
+  }
+  contact: markdownRemark(fileAbsolutePath: {regex: "/content/sections/contact/"}) {
+    frontmatter {
+      phone
+      email
+      address
+      linkedIn
+      linkedInAddress
+    }
+    html
+  }
+}
 `;
