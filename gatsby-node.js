@@ -25,8 +25,10 @@ exports.createPages = async ({ graphql, actions }) => {
         ) {
           edges {
             node {
+              fileAbsolutePath
               fields {
                 slug
+                relatedFileAbsolutePaths
               }
             }
           }
@@ -44,6 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   );
 
+  const posts = result.data.allMarkdownRemark.edges
   // console.log('NODE', result.data.allMarkdownRemark.edges);
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
@@ -54,6 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // Data passed to context is available in page queries as GraphQL vars.
         // (when we query data it will set $slug var auto)
         slug: node.fields.slug,
+        relatedFilePaths: node.fields.relatedFileAbsolutePaths.slice(0, 4),
       },
     });
   });

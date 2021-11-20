@@ -40,7 +40,7 @@ export const pageQuery = graphql`
     ) {
       nodes {
         frontmatter {
-          date(formatString: "D MMMM, YYYY")
+          date(formatString: "YYYY-MM-DD")
           title
           repo_link
           position

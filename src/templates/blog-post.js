@@ -8,6 +8,7 @@ import TagList from '../components/tag-list';
 import { blogMenuLinks } from '../components/_config/menu-links';
 import { StyledH1 } from '../components/_shared/styled-headings';
 import { StyledSection } from '../components/_shared/styled-section';
+import RelatedPosts from '../components/related-posts';
 import SEO from '../components/seo';
 
 const StyledBlogSection = styled(StyledSection)`
@@ -41,12 +42,13 @@ const BlogPost = ({ data }) => {
   const post = data.markdownRemark;
   const coverImage = post.frontmatter.cover_image ? post.frontmatter.cover_image.childImageSharp.fluid : null;
   const linkedin_image = post.frontmatter.linkedin_image ? post.frontmatter.linkedin_image.childImageSharp.fluid : null;
+  const relatePost = data.allMarkdownRemark.edges;
 
   const { tags = [], title, date } = post.frontmatter;
 
   return (
     <Layout menuLinks={blogMenuLinks}>
-      <SEO title={`SharePoint Blog - ${title}`} description={title} image={linkedin_image.src}/>
+      <SEO title={`SharePoint Blog - ${title}`} description={title} image={linkedin_image.src} />
       <StyledBlogSection>
         <StyledBlogTitle>{title}</StyledBlogTitle>
         <StyledDate>
@@ -55,6 +57,7 @@ const BlogPost = ({ data }) => {
         <TagList tags={tags} />
         {coverImage && <Img fluid={coverImage} />}
         <StyledBlogText dangerouslySetInnerHTML={{ __html: post.html }} />
+        <RelatedPosts data={relatePost}></RelatedPosts>
       </StyledBlogSection>
     </Layout>
   );
@@ -67,13 +70,13 @@ BlogPost.propTypes = {
 export default BlogPost;
 
 export const query = graphql`
-  query($slug: String!) {
+  query($slug: String!, $relatedFilePaths: [String]) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
         tags
-        date(formatString: "D. MMMM YYYY")
+        date(formatString: "YYYY-MM-DD")
         cover_image {
           childImageSharp {
             fluid(maxWidth: 800) {
@@ -81,7 +84,7 @@ export const query = graphql`
             }
           }
         }
-        linkedin_image{
+        linkedin_image {
           childImageSharp {
             fluid(maxWidth: 1200, maxHeight: 627) {
               ...GatsbyImageSharpFluid
@@ -92,6 +95,28 @@ export const query = graphql`
       fields {
         readingTime {
           text
+        }
+      }
+    }
+    allMarkdownRemark(filter: { fileAbsolutePath: { in: $relatedFilePaths } }, limit: 4) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            cover_image {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            description
+            tags
+            date
+          }
         }
       }
     }
