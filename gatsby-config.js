@@ -63,9 +63,8 @@ module.exports = {
         path: `${__dirname}/content/sections/contact`,
       },
     },
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

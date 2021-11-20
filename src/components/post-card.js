@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
-
+import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TagList from './tag-list';
@@ -76,7 +75,7 @@ const PostCard = ({ title, date, description, link, coverImage, tags }) => {
   return (
     <StyledPostCard>
       <Link to={link}>
-        <StyledCoverImageContainer>{coverImage && <GatsbyImage image={coverImage} />}</StyledCoverImageContainer>
+        <StyledCoverImageContainer>{coverImage && <Img fluid={coverImage} />}</StyledCoverImageContainer>
       </Link>
       <StyledPostTags>
         <TagList tags={tags} />

@@ -1,6 +1,6 @@
 ---
 phone: ''
-email: 'admin@billyperalta.com'
+email: 'info@billyperalta.com'
 address: 'Burnaby, British Columbia'
 linkedIn: 'Billy Peralta'
 linkedInAddress: 'https://www.linkedin.com/in/billyjoelperalta/'

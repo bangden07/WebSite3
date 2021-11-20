@@ -55,7 +55,7 @@ const Blog = ({ data }) => {
       />
       <StyledFullHeightSection>
         {data.allMarkdownRemark.edges.slice(leftCursor, rightCursor).map(({ node }) => {
-          const coverImage = node.frontmatter.cover_image ? node.frontmatter.cover_image.childImageSharp.gatsbyImageData : null;
+          const coverImage = node.frontmatter.cover_image ? node.frontmatter.cover_image.childImageSharp.fluid : null;
           return (
             <PostCard
               key={node.frontmatter.title}
@@ -87,35 +87,38 @@ Blog.propTypes = {
 
 export default Blog;
 
-export const query = graphql`{
-  allMarkdownRemark(
-    sort: {order: DESC, fields: frontmatter___date}
-    filter: {fileAbsolutePath: {regex: "/content/posts/"}, frontmatter: {published: {ne: false}}}
-  ) {
-    edges {
-      node {
-        frontmatter {
-          title
-          tags
-          date(formatString: "YYYY-MM-DD")
-          description
-          cover_image {
-            childImageSharp {
-              gatsbyImageData(width: 800, layout: CONSTRAINED)
+export const query = graphql`
+  query {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: frontmatter___date }
+      filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { published: { ne: false } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            tags
+            date(formatString: "YYYY-MM-DD")
+            description
+            cover_image {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
             }
           }
-        }
-        excerpt
-        fields {
-          slug
+          excerpt
+          fields {
+            slug
+          }
         }
       }
     }
-  }
-  site {
-    siteMetadata {
-      paginationPageSize
+    site {
+      siteMetadata {
+        paginationPageSize
+      }
     }
   }
-}
 `;

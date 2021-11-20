@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from './icon';
@@ -73,9 +73,7 @@ const StyledArchiveContainer = styled.div`
 
 const FeaturedProjects = ({ featured }) => {
   const featuredProjects = featured.map((project, index) => {
-    const coverImage = project.frontmatter.cover_image
-      ? getImage(project.frontmatter.cover_image.childImageSharp.gatsbyImageData)
-      : null;
+    const coverImage = project.frontmatter.cover_image ? project.frontmatter.cover_image.childImageSharp.fluid : null;
 
     const title = project.frontmatter.title;
     const demoLink = project.frontmatter.demo_link;
@@ -94,7 +92,7 @@ const FeaturedProjects = ({ featured }) => {
         >
           {coverImage && (
             <StyledImageContainer hasHover>
-              <GatsbyImage image={coverImage} />
+              <Img fluid={coverImage} />
             </StyledImageContainer>
           )}
         </a>

@@ -83,7 +83,7 @@ const Contact = ({ data }) => {
               <StyledFormContainer>
                 <StyledForm>My E-Mail</StyledForm>
                 <span>
-                  <a href="mailto:admin@billyperalta.com">{email}</a>
+                  <a href="mailto:info@billyperalta.com.com">{email}</a>
                 </span>
               </StyledFormContainer>
             </StyledContainer>
