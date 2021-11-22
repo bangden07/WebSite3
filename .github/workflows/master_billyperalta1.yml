@@ -9,9 +9,6 @@ on:
       - master
 
 jobs:
-  before_script:
-   - apk add make nasm autoconf automake libtool dpkg pkgconfig libpng libpng-dev g++
-  
   build-and-deploy:
     runs-on: windows-latest
 
@@ -25,7 +22,10 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-           
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install libtool automake autoconf nasm
+          rm -r node_modules
+          npm cache clean --force
           npm install
           npm install -g gatsby-cli
           npm run build --if-present
