@@ -20,8 +20,7 @@ jobs:
           #ssh-known-hosts: 'github.com' # ADDED
           #ssh-key: ${{ secrets.SSH_PRIVATE }} # ADDED
           submodules: true
-      - name: Create .npmrc file
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.SSH_PRIVATE }}" > .npmrc
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v0.0.1-preview
@@ -33,7 +32,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: '/' # App source code path
           api_location: '' # Api source code path - optional
-          app_artifact_location: 'public' # Built app content directory - optional
+          app_artifact_location: './dist/web' # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
