@@ -20,8 +20,6 @@ jobs:
           #ssh-known-hosts: 'github.com' # ADDED
           #ssh-key: ${{ secrets.SSH_PRIVATE }} # ADDED
           submodules: true
-      - name: Create .npmrc file
-        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v4.0.3
