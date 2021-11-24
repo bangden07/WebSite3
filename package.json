@@ -43,7 +43,6 @@
     "gatsby-source-filesystem": "^2.3.32",
     "gatsby-transformer-remark": "^2.8.37",
     "gatsby-transformer-sharp": "^2.5.16",
-    "mozjpeg": "^8.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -54,6 +53,7 @@
   "devDependencies": {
     "eslint": "^7.10.1",
     "eslint-plugin-react": "^7.21.2",
+    "mozjpeg": "^8.0.0",
     "prettier": "^2.1.2"
   },
   "license": "MITs"
