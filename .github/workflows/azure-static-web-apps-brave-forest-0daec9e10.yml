@@ -20,11 +20,11 @@ jobs:
           #ssh-known-hosts: 'github.com' # ADDED
           #ssh-key: ${{ secrets.SSH_PRIVATE }} # ADDED
           submodules: true
-      # - name: Install
-      #   run: brew update;
-      #     brew install automake autoconf libtool dpkg pkgconfig nasm libpng nasm;
-      #     npm cache verify;
-      #     npm install;
+      - name: Install Brew
+        run: brew update;
+          brew install automake autoconf libtool dpkg pkgconfig nasm libpng nasm;
+          npm cache verify;
+          npm install;
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v0.0.1-preview
