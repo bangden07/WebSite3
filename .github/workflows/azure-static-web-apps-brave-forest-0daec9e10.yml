@@ -22,8 +22,8 @@ jobs:
           submodules: true
       - name: Install
         run: brew update;
-          brew install automake autoconf libtool dpkg pkgconfig nasm libpng;
-          npm cache clear;
+          brew install automake autoconf libtool dpkg pkgconfig nasm libpng nasm;
+          npm cache verify;
           npm install;
       - name: Build And Deploy
         id: builddeploy
