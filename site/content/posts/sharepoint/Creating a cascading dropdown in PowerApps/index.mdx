@@ -1,0 +1,93 @@
+---
+title: Creating a cascading dropdown in PowerApps
+category: SharePoint
+author: Billy Peralta
+tags: ['O365', 'M365', 'SharePoint Online', 'PowerApps']
+keywords: ['O365', 'M365', 'SharePoint Online', 'PowerApps']
+date: 2020-10-06
+thumbnail: image.jpg
+---
+
+Let create first a SharePoint List as our source of choices in our dropdown.
+
+![Creating a SharePoint List](/PostImages/0.jpg)
+
+On the list(CountryList) that we created, let's add a column and lets named it Continent(Single line of text)
+
+![Adding a Column](/PostImages/1.jpg)
+
+Let's try to populate it with different sets of data.
+
+![Populating the list](/PostImages/2.jpg)
+
+Now we will create a new list, and let's call it our MainList
+
+![Creating Another list](/PostImages/3.jpg)
+
+The new list we created would be our list where we are going to store our user input. Now we will try to customize its form using PowerApps.
+
+![Creating an App under out Lists](/PostImages/4.jpg)
+
+Let's call our form "CascadingDropdownForm," then press **Create**
+
+![Creating the App](/PostImages/5.jpg)
+
+Typically, the apps don't show any data because no item has been added yet.
+
+![It currently show no data](/PostImages/6.jpg)
+
+Let go to EditScreen1.
+
+![Let's go to the Edit Screen](/PostImages/7.jpg)
+
+Now we will change the "Title" field from a single line of text to "Allowed Values" by clicking on the
+
+![Change the Title Field](/PostImages/8.jpg)
+
+Now we need to unlock it by clicking on the "Title" dropdown and right-click on, and clicking on "unlock."
+
+![Unlocking the Title dropdown](/PostImages/9.jpg)
+
+After that, we will add a connector to our App. This connector will point to our CountryList. To do that, lets click on the "Data"> Connectors > SharePoint
+
+![Adding connector](/PostImages/10.jpg)
+
+Enter the site URL of your site and hit connect
+
+![Connecting the site](/PostImages/11.jpg)
+
+Kindly select our "CountryList" and then press Connect.
+
+![Selecting the list we created earlier](/PostImages/12.jpg)
+
+This should add a Connection under your "In your App" section.
+
+![The Connection should show up](/PostImages/13.jpg)
+
+Now let's add the first dropdown to our canvas. We can do that by clicking on Insert > Dropdown. We are going to call it "DropContinent."
+
+To bind our first dropdown to the appropriate data source, we can do that by selecting the dropdown and then selecting the property named "Items," then putting "Distinct(CountryList, Continent)." I use the "Distinct" function so that unique values will show up in our DropContinent
+
+![We will now bind the dropdown](/PostImages/14.jpg)
+
+Once it is bound, our first value should already be shown in our form.
+
+![A value should show up now](/PostImages/15.jpg)
+
+Now let's do the same thing to our Title Dropdown. But now we will have a different "Items" value to it. We will use the filter function. Select our second dropdown select the “Items” property then type in “Filter(CountryList, Continent = DropContinent.Selected.Result)”
+
+![Now doing the same thing to the Title Dropdown](/PostImages/16.jpg)
+
+Note that it will error out, so try clicking on "Edit in the Formula bar."
+
+![Click the "Edit in the Formula bar"](/PostImages/17.jpg)
+
+We should now update the "Update" property with "DataCardValue13.SelectedText.Value"
+
+![We need to update the formula](/PostImages/18.jpg)
+
+Let try it out in the Preview(Press F5). We select "North America" on our first dropdown, and with that, only choice under "North America" shows up.
+
+![You should now have cascading dropdowns.](/PostImages/19.jpg)
+
+Lets us try now to Publish our form and try it out.

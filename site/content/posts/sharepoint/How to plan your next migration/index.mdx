@@ -1,0 +1,66 @@
+---
+title: Tips for planning your next SharePoint Migration Project
+category: SharePoint
+author: Billy Peralta
+tags: ['O365', 'M365', 'SharePoint Online', 'Migration', 'Planning']
+keywords: ['O365', 'M365', 'SharePoint Online', 'Migration', 'Planning']
+date: 2020-10-10
+thumbnail: image.jpg
+---
+
+_Note: This article is not about what tool or product you should use. It's about the lessons I learned after handling three different migration projects in the past 12 years in SharePoint._
+
+I think the essential part of SharePoint migration is not the middle of the end of the project but at the start. The Planning phase will dictate the outcome of your migration project(if it's a failure or success). I think not investing enough time in planning is a recipe for failure.
+
+Here are some steps/exercises you need to go through during the planning stage.
+
+- Scope
+- Inventory / Documentation
+- Identification of Velocity
+- Creation of Timeline
+
+##Scope
+
+![Scope](/PostImages/0.jpg)
+
+The scope is where you start exploring what things you are migrating are. Learn and feel how big a project you'll be tackling. In my previous project, we used paid tools to scope out how big the client farm is. Unfortunately, the tool we paid for didn't give us enough information, so I ended up creating a bunch of PowerShell the helped me answer the following important question:
+
+- How many SharePoint Farm we need to migrate? (Sometimes you need to migrate different version of SharePoint that they still maintain that you need to move to target SharePoint)
+
+- How big the data of the client is? (How many Terabytes)
+
+- What is the growth of data? Maybe they have some weekly backup. You can compare how fast that their site collection grows.
+
+- How many site collections are on the Farm?
+
+- In each site collection, how many subsites are under each site collection?
+
+- Who are the owners and the site collection in each site collection
+
+- How many custom solutions are installed on the Farm? (Expect there would be a Farm solution that you need to recreate that is compatible with SharePoint Online)
+
+- Does the client uses BCS or connect to any external data?
+
+- What are the top 10 biggest site collections
+
+- What are the top 10 most active site collection
+
+##Inventory
+
+![Inventory](/PostImages/2.jpg)
+
+Inventory is the step of documenting what you learned during the previous exercise. Aside from knowing the client's farm or site collection information, you also need to communicate with your client regarding who is the owner or contact person of each site collection/subsite, if there is any site collection that won't be migrated due to inactivity(so that you won't waste time migrating a site collection that would be decommissioned in the near future). You can create an excel file of a list of site collection/subsite and their respective contact person because this is important.
+
+You also need to ask the client if they have any migration window they prefer (This could be a little technical for them; you might want to reach out to their System Admin guy). It would help if you asked this because migrating Terabytes of Data is resource extensive, and you don't want to start your migration and share bandwidth with some scheduled task or something. This might also add constraints to their business process and can affect the clients' business.
+
+##Identification of Velocity
+
+![Velocity](/PostImages/3.jpg)
+
+Identification of Velocity is essential; you need to identify how much time it would take to migrate X amount of Data during migration. Doing multiple test migration is also recommended so that you can locate the Average Velocity. Once you identify your Velocity, you'll have a more accurate guess of how much time you need to migrate the whole Farm.
+
+##Creation of Timeline
+
+![Timeline](/PostImages/4.jpg)
+
+Once you identify your Velocity and the size of the SharePoint Farm/site collection/subsite, it would be easier for your to plot the date of the start and end date when Site Collections would migrate site collections. I prefer migrating one site collection at a time so that after migration, I can communicate with the Owner / Contact Person of the site collection that the new site collection is ready and can already be used. That is the most efficient way of migrating SharePoint with less impact on the business and client.

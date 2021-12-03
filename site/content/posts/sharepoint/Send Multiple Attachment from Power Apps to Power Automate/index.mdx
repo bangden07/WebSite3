@@ -1,0 +1,186 @@
+---
+title: Send Multiple Attachment from Power Apps to Power Automate
+category: SharePoint
+author: Billy Peralta
+tags:
+  ['M365', 'O365', 'SharePoint Online', 'Power Apps', 'Power Automate', 'Flow']
+keywords:
+  ['M365', 'O365', 'SharePoint Online', 'Power Apps', 'Power Automate', 'Flow']
+date: 2021-09-29
+thumbnail: image.jpg
+---
+
+This Tutorial is about sending multiple attachments from Power Apps to Power Automate without attaching your Form to SharePoint.
+
+###Requirements
+
+Before we can start, we need the following:
+
+- PowerApps
+- PowerAutomate
+
+###Adding Attachment Control (Skip if you already know how to add Attachment control in your Form)
+
+![First, let go to https://make.powerapps.com/ then create a new Canvas App](/PostImages/1.JPG)
+
+1. First, let go to https://make.powerapps.com/, then create a new Canvas App
+
+2. On PowerApps, there is no available control for attachment. We can have an Attachment Control by connecting our Form to any SharePoint.
+
+![On PowerApps, there is no available control you can use for attachment. So what we need to do is let's connect our Form to any SharePoint](/PostImages/2.JPG)
+
+![Receipt Library](/PostImages/3.JPG)
+
+    **Note: Feel free to connect to any site on your farm. It does not matter what list you'll use.**
+
+3. After connecting to a SharePoint list, go to your Screen and then select Insert > Forms > Edit.'
+
+![Receipt Library](/PostImages/4.JPG)
+
+4. It will create a Form control, try to connect that new Form control to the Sharepoint List connection we did earlier
+
+![Naming our AI](/PostImages/5.JPG)
+
+5. Now, from here, just copy(Ctrl + C) the Attachment control that is inside the Form Control and Paste (Ctrl + V) it on your other Screen
+
+![Naming our AI](/PostImages/6.JPG)
+
+6. After Pasting, you will now have an attachment control with errors on it(because it's trying to find properties from its parent form control); with that, go to each error and try to clear it.
+
+![Naming our AI](/PostImages/7.JPG)
+
+7. After resolving all errors, you should end up with Attachment control useful in your Form.
+
+![Teaching our AI Model where to get the Customer ID](/PostImages/8.JPG)
+
+###Using now our Attachment Control and Passing the files to Power Automate
+
+![Power Automate](/PostImages/9.JPG)
+
+1. Now that we have an attachment control(DataCardValue1) on our Form, unfortunately, we cannot just use that and pass it on to Power Automate. We need to have many conversations about its properties before it would be helpful for Power Automate.
+
+![Power Automate](/PostImages/9-1.JPG)
+
+2. Let's try to upload files in the Attachment control(DataCardValue1) and use the code below. I tried inserting the "Attachments" property of my Attachment control into a collection, and I ended up with the following values:
+
+![Power Automate](/PostImages/10.JPG)
+
+- Name - This is the filename(obviously) of the files I uploaded in the control
+- Value - This string here is just a pointer in our memory; we haven't uploaded the files in Power Apps yet, so it's useless if we send Collection directly to Power Automates.
+
+  **Note that I added the code below in my "OnSelect" of my submit button(Blue button on the lower right corner)**
+
+```cmd
+ "ClearCollect(attachmentControlColl,DataCardValue1.Attachments);"
+```
+
+3. Now that we have the file, to become useful, we need to trick the browser into uploading it somewhere, not just in memory. We can do that by using Gallery Control(Gallery1). And inside that Gallery, we need a Label control(FileNamePlaceholder) and an Image control(ImagePlaceholder)
+
+![Power Automate](/PostImages/11.JPG)
+
+4.  Once it's added, I suggest hiding Gallery Control(Gallery1). Because we do not need to show this control to our user
+
+![Power Automate](/PostImages/12.JPG)
+
+![Power Automate](/PostImages/13.JPG)
+
+5. Now, remember earlier that we use the Submit button to fill up the values inside our Collection called attachmentControlColl, we will not use that Collection to populate our Gallery Control(Gallery1), and we can do that by changing the "Item" property of our Gallery to "attachmentControlColl"
+
+![Power Automate](/PostImages/14.JPG)
+
+6. Now that the Gallery Control(Gallery1) is now populated, we will assign the Label(FileNamePlaceholder) and Image(ImagePlaceholder) control inside our Gallery to the different property of our Collection (attachmentControlColl). We can do that by editing the "Fields" Property.
+
+![Power Automate](/PostImages/15.JPG)
+
+7. After assigning our property to the correct control, we will add more code in our Submit Button. First, we need to create a new collection, calling it "finalCollection". Now since we load the files in our image, it's no longer sitting in the memory of our browser. So our next step now is pulling it back to a new collection(finalCollection) to send it to Power Automate.
+
+![Power Automate](/PostImages/16.JPG)
+
+```cmd
+"Clear(finalCollection);"
+
+ForAll(
+       Gallery1.AllItems,
+       Collect(
+               finalCollection,
+               {
+                 Name: FileNamePlaceholder.Text,
+                  ContentBytes : JSON(ImagePlaceholder.Image,IncludeBinaryData)
+               }
+      )
+);
+```
+
+8. After creating a new collection, we will now pull the data from our Gallery Control(Gallery1) and copy it to our new Collection (finalCollection)
+
+![Power Automate](/PostImages/17.JPG)
+
+9. After storing it on a collection, the output would be like this.
+
+10. Note that this Collection (finalCollection) is still ready to be sent to Power Automate. What we need to do next is do some trimming on it, so it's on Base64
+
+```
+ ContentBytes : Mid(JSON(ImagePlaceholder.Image,IncludeBinaryData),Find(",",JSON(Image4.Image,IncludeBinaryData))+1, Len(JSON(Image4.Image,IncludeBinaryData))-Find(",",JSON(Image4.Image,IncludeBinaryData))-1)
+```
+
+11. So Basically, your submit button OnSelect should look like this
+
+![Power Automate](/PostImages/18.JPG)
+
+12. For now, we are done with our PowerApps; we will now build our Power Automate
+
+###Using now our Attachment Control and Passing the files to Power Automate
+
+1. Create a blank PowerAutomate that PowerApps will trigger.
+
+2. First is to initialize an array variable
+
+![Power Automate](/PostImages/19.JPG)
+
+3. After that, we need a "Parse JSON" action so that the Collection that will be coming from Power Apps could be used here in Power Automate
+
+![Power Automate](/PostImages/20.JPG)
+
+```
+{
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "Name": {
+                "type": "string"
+            },
+            "ContentBytes": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "Name",
+            "ContentBytes"
+        ]
+    }
+}
+```
+
+4. After doing a Parse JSON, we can now use it in a loop and then using the "Convert" action, we will convert the "ContentBytes" property from Base64 to Binary using the following code
+
+![Power Automate](/PostImages/21.JPG)
+
+```
+@{
+base64ToBinary(items('Apply_to_each')['ContentBytes'])}
+```
+
+5. After doing a conversion, we will now append this value to our array along with the filename
+
+![Power Automate](/PostImages/22.JPG)
+
+6. After your loop, you can use this array to attach it any you like. I would be used to in the "Send an email V2" action. Note: I only use Send email action to simplify things and showcase how to send attachments in your Power Automate.
+
+![Power Automate](/PostImages/23.JPG)
+
+7. Now that our Power Automate WF is complete, we need to go back to our Power Apps earlier and complete our submit button by adding the "run" function to pass the "finalCollection" to Power Automate
+
+![Power Automate](/PostImages/24.JPG)
+
+8. After hitting the submit button, you should receive an email with an attachment on it.

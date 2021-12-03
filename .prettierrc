@@ -1,11 +1,7 @@
 {
-  "bracketSpacing": true,
-  "endOfLine": "lf",
-  "htmlWhitespaceSensitivity": "strict",
-  "printWidth": 120,
-  "semi": true,
+  "semi": false,
   "singleQuote": true,
-  "tabWidth": 2,
-  "trailingComma": "es5",
-  "useTabs": false
+  "jsxSingleQuote": true,
+  "trailingComma": "none",
+  "arrowParens": "avoid"
 }
