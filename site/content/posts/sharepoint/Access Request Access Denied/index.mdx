@@ -1,0 +1,41 @@
+---
+title: Getting Access Denied when trying to Approve a site Access Request
+category: SharePoint
+author: Billy Peralta
+tags:
+  ['O365', 'M365', 'SharePoint Online', 'SharePoint On-prem', 'Troubleshooting']
+keywords:
+  ['O365', 'M365', 'SharePoint', 'Access Denied', 'Access Request Denied']
+date: 2021-12-04
+thumbnail: image.jpg
+---
+
+Did this ever happen to you where you're trying to approve an access request for your site, but you're getting access denied even if you're the owner of the site? This bug happened when we migrated an On-Prem site to SharePoint Online, and somewhere during the migration process, something happened to our users' permission.
+
+You're getting access denied because the Approves don't have access to changes in the "Access Requests" SharePoint List, where we store all access requests for the site.
+
+So before you can get permission to the List, we need first to find the LIST ID of that hidden List. Note: The List of that List is not constant, and it's unique for every site.
+
+So let's first access that "Hidden List" by getting its unique List ID. To do that, access this page.
+
+**https://[SITE URL HERE]/Access%20Requests/pendingreq.aspx?mbypass=1**
+
+![Screenshot of access request page](/PostImages/AccessRequestPage.jpg)
+
+Once you are on the page, you need to access your developer toolbar(pressing Ctrl + Shift + I for Chrome-based user browser).
+
+![Screenshot of a Developer tool bar](/PostImages/AccessRequestPage.jpg)
+
+Once it's up, go to Elements the string "title=" Access Requests," but take note we only need the List ID from this(for this case, the LIST ID is in the 'href' property)
+
+![Finding the LIST ID](/PostImages/FindingthelistID.jpg)
+
+Now that we got the LIST ID(for this case its "**5f7109a0%2Da71d%2D4ad1%2Da6f9%2Dd6553d0f58fe**"). We will use that to access List settings page of our Access Request List.
+
+You can use the follow url:
+
+https://[SITE URL HERE]/\_layouts/15/listedit.aspx?List={**5f7109a0%2Da71d%2D4ad1%2Da6f9%2Dd6553d0f58fe**}
+
+![Access Request List](/PostImages/AccessRequestLists.jpg)
+
+Now that we get a chance to access our Access Request List, we can now change the permission of this List by clicking on "Permission for this List" and giving access to anyone who needs to approve Access Requests.
