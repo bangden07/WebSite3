@@ -29,7 +29,7 @@ export default () => (
       System Developer
     </Heading>
     <Heading variant='h3' sx={styles.specialty}>
-      Specialized in M365, Cloud and Javascript Development.
+      Specialized in M365, SharePoint Online, Cloud and Javascript Development
     </Heading>
     <Box variant='buttons.group'>
       <Button as={Link} to='/contact'>

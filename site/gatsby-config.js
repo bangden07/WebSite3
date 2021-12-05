@@ -58,7 +58,7 @@ module.exports = {
     title: 'https://billyperalta.com/',
     name: 'billy-peralta',
     description:
-      'A minimalistic starter to quickly set up and configure your portfolio with Gatsby',
+      'Billy Peralta is a SharePoint Developer for hire in Vancouver with more than Thirteen years of SharePoint experience with both On-premise and M365(O365) Sharepoint.',
     address: 'Burnaby, British Columbia',
     email: 'admin@billyperalta.com',
     phone: '',
